@@ -2,15 +2,13 @@
 ####  Returns a location of the data file to be processed by the createTable() function.
 ####  Function will not run if a directory of data previously exists.
 
-download <- function(url, dataFileName, zipFileName) {
+download <- function(url, zipFileName) {
   
   #   url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
-  #   dataFileName <- "national_emissions.txt"
   #   zipFileName <- "national_emissions.zip"
   
   ## Establish destinations for zip and data files.
   dataDirPath <- "data"
-  datasetDirPath <- file.path(dataDirPath, dataFileName)
   zipPath <- file.path(dataDirPath, zipFileName)
   
   ## Downloading/Unzipping data *iff* data doesn't already exist
