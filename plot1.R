@@ -4,7 +4,6 @@
 
 ## Source data.table library and download.R functions
 library(data.table)
-library(plyr)
 source("download.R")
 
 ## Set variables for download() function parameters.
@@ -15,9 +14,9 @@ download(url)
 NEI <- readRDS("data/summarySCC_PM25.rds")
 SCC <- readRDS("data/Source_Classification_Code.rds")
 
-total_emissions <- aggregate.data.frame(NEI$Emissions, "sum", by=list(NEI$year))
-total_emissions$x <- total_emissions$x * .000001
 
-# png(filename="plot1.png", width=480, height=480)
-with(total_emissions, plot(Group.1, x, type ="b"))
-# dev.off()
+total_emissions <- aggregate(Emissions~year,sum,data = NEI)
+
+png(filename="plot1.png", width=480, height=480)
+with(total_emissions, plot(year, Emissions, type = "b", col = "red")) 
+dev.off()
