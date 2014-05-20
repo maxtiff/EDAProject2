@@ -5,7 +5,6 @@
 
 library(ggplot2)
 library(data.table)
-library(reshape2)
 source("download.R")
 
 ## Set variables for download() function parameters.
@@ -20,9 +19,7 @@ NEI <- readRDS("data/summarySCC_PM25.rds")
 NEI <- NEI[NEI$fips %in% c("24510"),]
 
 ## Plot graph with ggplot. Types are seperated into individual facets.
+png(filename="plot3.png", width=480, height=480)
 g <- ggplot(NEI, aes(year, Emissions))
-g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum" ) + facet_grid(. ~ type)
-  
-
-
-
+g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum",colour = "red", size = 1 ) + facet_wrap( ~ type, nrow = 2)
+dev.off()
