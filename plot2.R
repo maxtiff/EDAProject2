@@ -4,6 +4,7 @@
 
 ## Source data.table library and download.R functions
 library(data.table)
+library(plyr)
 source("download.R")
 
 ## Set variables for download() function parameters.
