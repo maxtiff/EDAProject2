@@ -28,5 +28,5 @@ neiMV$Emissions <- neiMV$Emissions * .001
 
 ## Plot time series graph of motor vehicle emissions for the Baltimore City area.
 g <- ggplot(neiMV, aes(year, Emissions, group = fips, colour = fips)) 
-g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum", size = 1 ) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white") + ggtitle("Total Emissions of PM-2.5 per year\nfrom Motor Vehicles \nin Baltimore City vs. Los Angeles") + theme(plot.title = element_text(lineheight=.8, face="bold"))
+g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum", size = 1 ) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white") + ggtitle("Total Emissions of PM-2.5 per year\nfrom Motor Vehicles \nin Baltimore City vs. Los Angeles") + theme(plot.title = element_text(lineheight=.8, face="bold")) + xlab("Years") + ylab("A2.6: Sum of PM-2.5 Emissions. Kilotons/Year")
 ggsave(filename="plot6.png", width=4.80, height=4.80, dpi=100)
