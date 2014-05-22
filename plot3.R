@@ -20,5 +20,5 @@ balmerEmissions <- NEI[NEI$fips %in% c("24510"),]
 
 ## Plot graph with ggplot. Types are seperated into individual facets.
 g <- ggplot(balmerEmissions, aes(year, Emissions, color=type))
-g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum", size = 1 ) + facet_wrap( ~ type, nrow = 2) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white") + scale_color_brewer() + theme(legend.position="none")
+g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum", size = 1 ) + facet_wrap( ~ type, nrow = 2) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white") + scale_color_brewer() + theme(legend.position="none") + ggtitle("Total Emissions of PM-2.5 per year\nby type in Baltimore City, MD ") + theme(plot.title = element_text(lineheight=.8, face="bold"))
 ggsave(filename="plot3.png", width=4.80, height=4.80, dpi = 100)
