@@ -12,8 +12,6 @@ source("download.R")
 download(url)
 
 NEI <- readRDS("data/summarySCC_PM25.rds")
-SCC <- readRDS("data/Source_Classification_Code.rds")
-
 
 total_emissions <- aggregate(Emissions~year,sum,data = NEI)
 

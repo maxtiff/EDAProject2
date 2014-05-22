@@ -19,7 +19,6 @@ NEI <- readRDS("data/summarySCC_PM25.rds")
 NEI <- NEI[NEI$fips %in% c("24510"),]
 
 ## Plot graph with ggplot. Types are seperated into individual facets.
-png(filename="plot3.png", width=480, height=480)
+ggsave(filename="plot3.png", width=4.80, height=4.80, dpi = 100)
 g <- ggplot(NEI, aes(year, Emissions))
-g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum",colour = "red", size = 1 ) + facet_wrap( ~ type, nrow = 2)
-dev.off()
+g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum",colour = "red", size = 1 ) + facet_wrap( ~ type, nrow = 2) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white")
