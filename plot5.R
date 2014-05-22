@@ -24,6 +24,6 @@ sccMV <- SCC[grepl("Mobile - On-Road", SCC$EI.Sector, ignore.case=TRUE),]
 neiMV <- subset(NEI, SCC %in% sccMV$SCC)
 
 ## Plot time series graph of motor vehicle emissions for the Baltimore City area.
-ggsave(filename="plot5.png", width=4.80, height=4.80, dpi=100)
 g <- ggplot(neiMV, aes(year, Emissions))
-g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum",colour = "red", size = 1 ) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white")
+g + geom_line(aes( y = Emissions ) , stat="summary", fun.y="sum",colour = "red", size = 1 ) + geom_point( aes( y = Emissions ) , stat="summary", fun.y="sum", size=4, shape=21, fill="white") + ggtitle("Total Emissions of PM-2.5 per year\nfrom Motor Vehicles in Baltimore City") + theme(plot.title = element_text(lineheight=.8, face="bold"))
+ggsave(filename="plot5.png", width=4.80, height=4.80, dpi=100)

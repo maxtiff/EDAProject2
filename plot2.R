@@ -13,10 +13,14 @@ download(url)
 
 NEI <- readRDS("data/summarySCC_PM25.rds")
 
-NEI <- NEI[NEI$fips %in% c("24510"),]
+balmerEmissions <- NEI[NEI$fips %in% c("24510"),]
 
-total_emissions <- aggregate(Emissions~year,sum,data = NEI)
+emissionsTotal <- aggregate(Emissions~year,sum,data = balmerEmissions)
+emissionsTotal$Emissions <- emissionsTotal$Emissions * .001
+
 
 png(filename="plot2.png", width=480, height=480)
-with(total_emissions, plot(year, Emissions, type = "b", col = "red")) 
+with(emissionsTotal, plot(year, Emissions, type = "b", col = "red", xlab="Years", ylab="A2.2: Sum of PM-2.5 Emissions. Kilotons/Year",axes=FALSE))
+with(emissionsTotal, axis(1, at=(year)))
+with(emissionsTotal, axis(2, at=(signif(Emissions, 2))))
 dev.off()
